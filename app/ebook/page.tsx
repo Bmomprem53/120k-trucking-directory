@@ -19,7 +19,6 @@ export default function EbookPage() {
         </p>
         <div className="mt-8 space-y-4 text-lg leading-relaxed text-slate-300">
           <p>You&apos;re skeptical. That&apos;s smart.</p>
-          <p>It&apos;s the second one.</p>
           <p>
             The oilfield structure isn&apos;t built like traditional trucking.
             It&apos;s 24/7 operations. Guaranteed hourly rates. Mandatory overtime.
