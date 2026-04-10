@@ -12,7 +12,7 @@ export default async function Home() {
           HOW TO MAKE $120K WITHOUT OWNING THE TRUCK!
         </h1>
         <p className="mt-6 max-w-3xl text-xl font-medium text-amber-100/95">
-          Turn your CDL into wealth. Don&apos;t settle when opportunity is calling.
+          Average of 65 hrs on 5 days a week. That&apos;s how I make over $120k in the oilfield.
         </p>
         <div className="mt-8 max-w-3xl space-y-4 text-lg text-slate-300">
           <p>
