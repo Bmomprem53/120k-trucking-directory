@@ -1,7 +1,7 @@
 const LINKS = {
-  ebook: "https://mompremiermediagroup.gumroad.com/l/apvnkz",
-  guide: "https://mompremiermediagroup.gumroad.com/l/ppxphh",
-  bundle: "https://mompremiermediagroup.gumroad.com/l/zurzc",
+  ebook: "https://120koilfielddriver.gumroad.com/l/apvnkz",
+  guide: "https://120koilfielddriver.gumroad.com/l/ppxphh",
+  bundle: "https://120koilfielddriver.gumroad.com/l/zurzc",
 } as const;
 
 type Variant = "hero" | "section" | "footer";
