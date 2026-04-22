@@ -11,13 +11,13 @@ export default async function Home() {
       <section className="relative flex min-h-[420px] items-center justify-center overflow-hidden md:min-h-[520px]">
         <img
           src="/images/hero-bg.png"
-          alt="Tanker truck at an oilfield drilling site"
+          alt="Tanker trucks at sunset in the Permian Basin"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-slate-950/65" />
         <div className="relative z-10 mx-auto max-w-4xl px-6 py-20 text-center">
           <h2 className="text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-            Fueling what fuels the world!
+            Find your oilfield opportunity!
           </h2>
           <p className="mt-4 text-xl font-medium text-amber-200 md:text-2xl">
             See why the oilfield pays differently
