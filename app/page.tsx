@@ -7,6 +7,24 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
+      {/* Full-width static hero */}
+      <section className="relative flex min-h-[420px] items-center justify-center overflow-hidden md:min-h-[520px]">
+        <img
+          src="/images/hero-bg.png"
+          alt="Tanker truck at an oilfield drilling site"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-950/65" />
+        <div className="relative z-10 mx-auto max-w-4xl px-6 py-20 text-center">
+          <h2 className="text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+            Fueling what fuels the world!
+          </h2>
+          <p className="mt-4 text-xl font-medium text-amber-200 md:text-2xl">
+            See why the oilfield pays differently
+          </p>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <h1 className="max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">
           HOW TO MAKE $120K WITHOUT OWNING THE TRUCK!
@@ -120,23 +138,34 @@ export default async function Home() {
               <Link
                 key={cat.slug}
                 href={`/directory/${cat.slug}`}
-                className="group flex flex-col rounded-xl border border-slate-800 bg-slate-950/60 p-5 transition hover:border-amber-400/40"
+                className="group flex flex-col rounded-xl border border-slate-800 bg-slate-950/60 transition hover:border-amber-400/40 overflow-hidden"
               >
-                <p className="text-xs font-semibold uppercase tracking-wide text-amber-400/80">
-                  {cat.regulatory}
-                </p>
-                <h3 className="mt-2 text-lg font-bold leading-snug text-slate-100 group-hover:text-amber-200">
-                  {cat.name}
-                </h3>
-                <p className="mt-2 line-clamp-3 text-sm text-slate-400">
-                  {cat.headline}
-                </p>
-                <p className="mt-3 text-xs text-slate-500">
-                  {cat.payRange} · {cat.companyCount} in directory
-                </p>
-                <span className="mt-4 text-sm font-semibold text-amber-300">
-                  Explore →
-                </span>
+                {cat.image ? (
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="h-36 w-full object-cover"
+                  />
+                ) : (
+                  <div className="h-36 w-full bg-slate-800/40" />
+                )}
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-amber-400/80">
+                    {cat.regulatory}
+                  </p>
+                  <h3 className="mt-2 text-lg font-bold leading-snug text-slate-100 group-hover:text-amber-200">
+                    {cat.name}
+                  </h3>
+                  <p className="mt-2 line-clamp-3 text-sm text-slate-400">
+                    {cat.headline}
+                  </p>
+                  <p className="mt-3 text-xs text-slate-500">
+                    {cat.payRange} · {cat.companyCount} in directory
+                  </p>
+                  <span className="mt-4 text-sm font-semibold text-amber-300">
+                    Explore →
+                  </span>
+                </div>
               </Link>
             ))}
             <Link

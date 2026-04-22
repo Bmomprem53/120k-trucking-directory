@@ -24,6 +24,11 @@ export default function WhyOilfieldPaysMorePage() {
         </div>
       </header>
 
+      {/* Hero image slot — replace src when ready */}
+      <div className="mx-auto max-w-4xl px-6 pt-10">
+        <div className="h-56 w-full rounded-xl bg-slate-800/40 md:h-72" />
+      </div>
+
       <article className="mx-auto max-w-4xl px-6 py-14">
         <p className="text-sm font-semibold uppercase tracking-wide text-amber-400/90">
           70-Hour Multiplier Effect

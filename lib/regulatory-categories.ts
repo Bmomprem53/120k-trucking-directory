@@ -12,6 +12,10 @@ export type RegulatoryCategory = {
   /** Optional: full pay block for /directory/[slug] (cards still use payRange). */
   paySectionExtra?: string;
   barrierLevel: "Moderate" | "Higher" | "High" | "Highest";
+  /** Card thumbnail — populate via Airtable or static path in /public */
+  image?: string;
+  /** Full-width hero for the /directory/[slug] detail page */
+  heroImage?: string;
 };
 
 export const REGULATORY_CATEGORIES: RegulatoryCategory[] = [

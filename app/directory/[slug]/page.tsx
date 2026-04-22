@@ -37,6 +37,16 @@ export default async function DirectorySlugPage({ params }: Props) {
           </div>
         </header>
 
+        {category.heroImage && (
+          <div className="mx-auto max-w-4xl px-6 pt-10">
+            <img
+              src={category.heroImage}
+              alt={category.name}
+              className="h-56 w-full rounded-xl object-cover md:h-72"
+            />
+          </div>
+        )}
+
         <article className="mx-auto max-w-4xl px-6 py-14">
           <p className="text-sm font-semibold uppercase tracking-wide text-amber-400/90">
             {category.regulatory}
@@ -138,10 +148,23 @@ export default async function DirectorySlugPage({ params }: Props) {
       </header>
 
       <article className="mx-auto max-w-4xl px-6 py-14">
-        <p className="text-sm text-slate-500">{company.category}</p>
-        <h1 className="mt-2 text-4xl font-extrabold">{company.name}</h1>
-        <p className="mt-2 text-amber-200/90">{company.payRange}</p>
-        <p className="mt-1 text-sm text-slate-500">{company.hiringStatus}</p>
+        <div className="flex items-start gap-5">
+          {company.image ? (
+            <img
+              src={company.image}
+              alt={company.name}
+              className="h-20 w-20 flex-shrink-0 rounded-xl object-cover"
+            />
+          ) : (
+            <div className="h-20 w-20 flex-shrink-0 rounded-xl bg-slate-800/60" />
+          )}
+          <div>
+            <p className="text-sm text-slate-500">{company.category}</p>
+            <h1 className="mt-1 text-4xl font-extrabold">{company.name}</h1>
+            <p className="mt-2 text-amber-200/90">{company.payRange}</p>
+            <p className="mt-1 text-sm text-slate-500">{company.hiringStatus}</p>
+          </div>
+        </div>
 
         <section className="mt-12 space-y-3">
           <h2 className="text-xl font-bold">Company overview</h2>

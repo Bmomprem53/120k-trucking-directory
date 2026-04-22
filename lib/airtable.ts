@@ -42,6 +42,8 @@ export type DirectoryCompany = {
   hiringPicture: string;
   insiderPerspective: string;
   alignmentCheck: string;
+  /** Company logo or photo — pulled from Airtable attachment field */
+  image?: string;
 };
 
 type AirtableListResponse = {
@@ -64,6 +66,23 @@ async function fetchTable(tableName: string): Promise<AirtableListResponse | nul
   }
 
   return res.json();
+}
+
+function pickImageUrl(
+  fields: Record<string, unknown>,
+  keys: string[]
+): string | undefined {
+  for (const key of keys) {
+    const val = fields[key];
+    if (Array.isArray(val) && val.length > 0) {
+      const first = val[0];
+      if (typeof first === "object" && first !== null && "url" in first) {
+        return String((first as { url: string }).url);
+      }
+    }
+    if (typeof val === "string" && val.startsWith("http")) return val;
+  }
+  return undefined;
 }
 
 function recordToCompany(
@@ -94,6 +113,7 @@ function recordToCompany(
       pickField(fields, ["Insider Perspective", "Insider"]) ?? "",
     alignmentCheck:
       pickField(fields, ["Alignment Check", "Alignment"]) ?? "",
+    image: pickImageUrl(fields, ["Image", "Logo", "Photo", "Thumbnail"]),
   };
 }
 
@@ -133,6 +153,8 @@ export async function getCategoriesWithCounts(): Promise<CategoryWithCount[]> {
 
   const airtableCategories = await fetchTable("Categories");
   const slugToCount = new Map<string, number>();
+  const slugToImage = new Map<string, string>();
+  const slugToHero = new Map<string, string>();
 
   if (airtableCategories?.records) {
     for (const r of airtableCategories.records) {
@@ -162,7 +184,13 @@ export async function getCategoriesWithCounts(): Promise<CategoryWithCount[]> {
           count = 0;
         }
       }
-      if (slug) slugToCount.set(slug, count);
+      const image = pickImageUrl(f, ["Image", "Photo", "Thumbnail", "Hero Image"]);
+      const heroImage = pickImageUrl(f, ["Hero Image", "Hero", "Banner"]);
+      if (slug) {
+        slugToCount.set(slug, count);
+        if (image) slugToImage.set(slug, image);
+        if (heroImage) slugToHero.set(slug, heroImage);
+      }
     }
   }
 
@@ -172,7 +200,12 @@ export async function getCategoriesWithCounts(): Promise<CategoryWithCount[]> {
       fromAirtable !== undefined
         ? fromAirtable
         : countCompaniesByCategorySlug(companies, cat);
-    return { ...cat, companyCount: computed };
+    return {
+      ...cat,
+      companyCount: computed,
+      image: slugToImage.get(cat.slug) ?? cat.image,
+      heroImage: slugToHero.get(cat.slug) ?? cat.heroImage,
+    };
   });
 }
 

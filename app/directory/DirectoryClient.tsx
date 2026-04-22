@@ -48,21 +48,32 @@ export function DirectoryClient({ categories, companies }: Props) {
             <Link
               key={cat.slug}
               href={`/directory/${cat.slug}`}
-              className="group rounded-xl border border-slate-800 bg-slate-900/60 p-5 transition hover:border-amber-400/50"
+              className="group overflow-hidden rounded-xl border border-slate-800 bg-slate-900/60 transition hover:border-amber-400/50"
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-amber-400/90">
-                {cat.regulatory}
-              </p>
-              <h3 className="mt-2 text-lg font-bold text-slate-100 group-hover:text-amber-200">
-                {cat.name}
-              </h3>
-              <p className="mt-1 text-sm text-slate-400">{cat.payRange}</p>
-              <p className="mt-2 text-xs text-slate-500">
-                {cat.companyCount} listed in directory
-              </p>
-              <span className="mt-4 inline-block text-sm font-semibold text-amber-300">
-                Explore →
-              </span>
+              {cat.image ? (
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="h-36 w-full object-cover"
+                />
+              ) : (
+                <div className="h-36 w-full bg-slate-800/40" />
+              )}
+              <div className="p-5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-amber-400/90">
+                  {cat.regulatory}
+                </p>
+                <h3 className="mt-2 text-lg font-bold text-slate-100 group-hover:text-amber-200">
+                  {cat.name}
+                </h3>
+                <p className="mt-1 text-sm text-slate-400">{cat.payRange}</p>
+                <p className="mt-2 text-xs text-slate-500">
+                  {cat.companyCount} listed in directory
+                </p>
+                <span className="mt-4 inline-block text-sm font-semibold text-amber-300">
+                  Explore →
+                </span>
+              </div>
             </Link>
           ))}
         </div>
@@ -123,12 +134,23 @@ export function DirectoryClient({ categories, companies }: Props) {
               <Link
                 key={co.id}
                 href={`/directory/${co.slug}`}
-                className="rounded-xl border border-slate-800 bg-slate-900/50 p-5 transition hover:border-slate-600"
+                className="flex items-start gap-4 rounded-xl border border-slate-800 bg-slate-900/50 p-5 transition hover:border-slate-600"
               >
-                <h3 className="text-lg font-semibold text-amber-200">{co.name}</h3>
-                <p className="mt-1 text-sm text-slate-400">{co.category}</p>
-                <p className="mt-2 text-sm text-slate-300">{co.payRange}</p>
-                <p className="mt-1 text-xs text-slate-500">{co.hiringStatus}</p>
+                {co.image ? (
+                  <img
+                    src={co.image}
+                    alt={co.name}
+                    className="h-14 w-14 flex-shrink-0 rounded-lg object-cover"
+                  />
+                ) : (
+                  <div className="h-14 w-14 flex-shrink-0 rounded-lg bg-slate-800/60" />
+                )}
+                <div>
+                  <h3 className="text-lg font-semibold text-amber-200">{co.name}</h3>
+                  <p className="mt-1 text-sm text-slate-400">{co.category}</p>
+                  <p className="mt-2 text-sm text-slate-300">{co.payRange}</p>
+                  <p className="mt-1 text-xs text-slate-500">{co.hiringStatus}</p>
+                </div>
               </Link>
             ))
           )}
