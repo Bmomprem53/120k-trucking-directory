@@ -30,7 +30,7 @@ export default async function Home() {
           HOW TO MAKE $120K WITHOUT OWNING THE TRUCK!
         </h1>
         <p className="mt-6 max-w-3xl text-xl font-medium text-amber-100/95">
-          Avoid the fuel and maintenance bills. Just drive, earn, and move free.
+          Avoid the fuel and maintenance bills. Drive, earn, and move free.
         </p>
         <div className="mt-8 max-w-3xl space-y-4 text-lg text-slate-300">
           <p>
